@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carrinho de Compras</title>
+</head>
+<body>
+  <h1>Carrinho de Compras</h1>
+  
+  <!-- Formulário para adicionar itens ao carrinho -->
+  <form id="itemForm">
+    <label for="nomeInput">Nome do Item:</label>
+    <input type="text" id="nomeInput" required><br>
+
+    <label for="precoInput">Preço do Item:</label>
+    <input type="number" id="precoInput" required><br>
+
+    <label for="quantidadeInput">Quantidade:</label>
+    <input type="number" id="quantidadeInput" required><br>
+
+    <button type="submit">Adicionar ao Carrinho</button>
+  </form>
+  
+  <!-- Div para exibir o carrinho de compras -->
+  <div id="carrinhoDiv"></div>
+
+  <script>
+    const carrinho = [];
+
+    document.getElementById('itemForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById('nomeInput').value;
+      const preco = parseFloat(document.getElementById('precoInput').value);
+      const quantidade = parseInt(document.getElementById('quantidadeInput').value);
+
+      carrinho.push({ nome, preco, quantidade });
+
+      exibirCarrinho();
+    });
+
+    function exibirCarrinho() {
+      const carrinhoDiv = document.getElementById('carrinhoDiv');
+      carrinhoDiv.innerHTML = '';
+
+      if (carrinho.length === 0) {
+        carrinhoDiv.innerHTML = '<p>Carrinho vazio.</p>';
+      } else {
+        carrinhoDiv.innerHTML = '<h2>Itens no Carrinho</h2>';
+        for (const item of carrinho) {
+          const total = item.preco * item.quantidade;
+          carrinhoDiv.innerHTML += `
+            <p>Nome: ${item.nome}</p>
+            <p>Preço: R$ ${item.preco.toFixed(2)}</p>
+            <p>Quantidade: ${item.quantidade}</p>
+            <p>Total: R$ ${total.toFixed(2)}</p>
+            <hr>
+          `;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contagem de Letra</title>
+    <script>
+        function countLetterOccurrences(str, letter) {
+            str = str.toLowerCase(); // Considerar letras maiúsculas e minúsculas iguais
+            letter = letter.toLowerCase();
+            
+            var count = 0;
+            for (var i = 0; i < str.length; i++) {
+                if (str.charAt(i) === letter) {
+                    count++;
+                }
+            }
+            
+            return count;
+        }
+
+        function countAndDisplay() {
+            var input = document.getElementById('inputString').value;
+            var targetLetter = document.getElementById('targetLetter').value;
+            
+            var occurrences = countLetterOccurrences(input, targetLetter);
+            
+            var resultDiv = document.getElementById('result');
+            resultDiv.textContent = `A letra '${targetLetter}' aparece ${occurrences} vezes na string.`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Contagem de Letra</h1>
+    <label for="inputString">Digite uma string:</label>
+    <input type="text" id="inputString"><br>
+    <label for="targetLetter">Digite a letra a ser contada:</label>
+    <input type="text" id="targetLetter"><br>
+    <button onclick="countAndDisplay()">Contar</button>
+    <div id="result"></div>
+</body>
+</html>

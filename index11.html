@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibir Números Pares</title>
+
+    <script>
+        function displayEvenNumbers() {
+            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const outputDiv = document.getElementById("output");
+            
+            outputDiv.innerHTML = ""; // Limpa o conteúdo anterior
+            
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] % 2 === 0) {
+                    const paragraph = document.createElement("p");
+                    paragraph.textContent = numbers[i];
+                    outputDiv.appendChild(paragraph);
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Exibir Números Pares</h1>
+    <button onclick="displayEvenNumbers()">Exibir Números Pares</button>
+    <div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Média Aritmética</title>
+
+    <script>
+        function calculateAverage(numbers) {
+            if (numbers.length === 0) {
+                return 0;
+            }
+            
+            const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+            return sum / numbers.length;
+        }
+        
+        function getAverage() {
+            const inputNumbers = document.getElementById("numbersInput").value;
+            const numbersArray = inputNumbers.split(",").map(Number);
+            const resultMessage = document.getElementById("resultMessage");
+            
+            const average = calculateAverage(numbersArray);
+            resultMessage.textContent = "A média aritmética é " + average.toFixed(2);
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Calcular Média Aritmética</h1>
+    <label for="numbersInput">Digite os números separados por vírgula: </label>
+    <input type="text" id="numbersInput">
+    <button onclick="getAverage()">Calcular Média</button>
+    <p id="resultMessage"></p>
+</body>
+</html>

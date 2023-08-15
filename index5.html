@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Fatorial</title>
+
+    <script>
+        function calculateFactorial(number) {
+            if (number === 0 || number === 1) {
+                return 1;
+            }
+            
+            let factorial = 1;
+            for (let i = 2; i <= number; i++) {
+                factorial *= i;
+            }
+            
+            return factorial;
+        }
+        
+        function getFactorial() {
+            const inputNumber = parseInt(document.getElementById("numberInput").value);
+            const resultMessage = document.getElementById("resultMessage");
+            
+            if (isNaN(inputNumber) || inputNumber < 0) {
+                resultMessage.textContent = "Por favor, insira um número não negativo.";
+            } else {
+                const factorial = calculateFactorial(inputNumber);
+                resultMessage.textContent = "O fatorial de " + inputNumber + " é " + factorial + ".";
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Calcular Fatorial</h1>
+    <label for="numberInput">Digite um número não negativo: </label>
+    <input type="number" id="numberInput">
+    <button onclick="getFactorial()">Calcular Fatorial</button>
+    <p id="resultMessage"></p>
+</body>
+</html>
